@@ -1,0 +1,13 @@
+<h1>Product Details</h1>
+<div class="header-img"></div>
+<div class="divContent">
+  <h2>{{productData?.Title}}</h2>
+  <h4>Price: {{productData?.Price | currency:'USD'}}</h4>
+  <img class="img-size" mat-card-image src="{{productData?.Image}}">
+  <h4>Description: </h4>
+  <p>
+    {{productData?.Description}}
+  </p>
+  <button *ngIf='userLogService.isAuthenticated' class="btn" type="button"
+    (click)="cart.addToCart(productData)"><span>Add to cart</span></button>
+</div>

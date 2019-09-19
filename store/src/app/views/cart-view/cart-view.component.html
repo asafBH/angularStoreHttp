@@ -1,0 +1,29 @@
+<h1>Shopping Cart</h1>
+<div class="header-img"></div>
+<br>
+<table
+  *ngIf="(cart.$cartSubject | async)?.length > 0 && (cart.cartStatusForView() | async); let products; else noItems">
+  <tr>
+    <th>Product Name</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Total</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let prod of products">
+    <td><a routerLink="{{prod.product.CategoryId}}/{{prod.product.Title}}">{{prod.product.Title}}</a></td>
+    <td>{{prod.count}}</td>
+    <td>{{prod.product.Price | currency:'USD'}}</td>
+    <td>{{prod.product.Price * prod.count | currency:'USD'}}</td>
+    <td> <button class="removeBut" (click)="removeFromCart(prod.product)">remove</button></td>
+  </tr>
+  <br>
+  Total Cost: {{cart.cartTotalValue() | async | currency:'USD'}}
+</table>
+<router-outlet>
+</router-outlet>
+<ng-template #noItems>
+  <h3 class="notIt">
+    No items in cart.
+  </h3>
+</ng-template>

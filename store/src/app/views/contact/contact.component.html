@@ -1,0 +1,28 @@
+<h1>Contact Us</h1>
+<div class="header-img"></div>
+<br>
+<h3>Email us for any question</h3>
+<div class="container">
+  <form #contactForm="ngForm">
+    <div class="form-group">
+      <label for="email">Contact Email</label>
+      <input class="form-control" name="email" type="email" [(ngModel)]="email" #emailInput="ngModel" required
+        email="true" /><br />
+      <div [hidden]="emailInput.valid || emailInput.pristine" class="alert alert-danger">
+        Email is invalid
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <input class="form-control" name="subject" type="text" [(ngModel)]="subject" required #name="ngModel" /><br />
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea class="form-control" name="Message" [(ngModel)]="message"></textarea>
+    </div>
+    <button [disabled]="!contactForm.form.valid" appInputFormat>Submit</button>
+  </form>
+</div>

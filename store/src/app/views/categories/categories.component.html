@@ -1,0 +1,6 @@
+<h1>Product List</h1>
+<div class="header-img"></div>
+<mat-list role="list">
+  <mat-list-item class="mouse-pointer" *ngFor="let cat of data.getCategories() | async" (click)="goToCategory(cat.Id)"
+    role="listitem">{{cat.Title}}</mat-list-item>
+</mat-list>

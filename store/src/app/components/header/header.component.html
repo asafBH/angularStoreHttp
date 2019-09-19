@@ -1,0 +1,19 @@
+<header>
+  <nav>
+    <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex>
+        <a class="mouse-pointer" (click)="sibCom.toggle()">
+          <mat-icon>menu</mat-icon>
+        </a>
+      </div>
+      <mat-form-field class="right-space">
+        <mat-select (selectionChange)="localization.changeLang($event)" [value]="localization.currentLang">
+          <mat-option *ngFor="let lang of localization.availableLang" value={{lang}}> {{lang}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-icon *ngIf="userLog.isAuthenticated" class="mouse-pointer right-space"
+        matBadge="{{(cart.$cartSubject | async)?.length}}" matBadgeColor="warn" routerLink="/cart">shopping_cart
+      </mat-icon>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,12 @@
+<mat-card class="example-card min-hieght">
+  <mat-card-header>
+    <mat-card-title>{{productData.Title}}</mat-card-title>
+    <mat-card-subtitle>Price: {{productData.Price | currency:'USD'}}</mat-card-subtitle>
+  </mat-card-header>
+  <img class="img-size" mat-card-image src="{{productData.Image}}">
+  <mat-card-content>
+    <p>
+      {{fullDescription ? productData.Description : productData.Description | shortDesc: 100}}
+    </p>
+  </mat-card-content>
+</mat-card>

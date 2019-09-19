@@ -1,0 +1,29 @@
+h1 {
+  text-align: center;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container>* {
+  width: 100%;
+}
+
+.container {
+  padding: 0px;
+  margin: 0%;
+}
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42A948;
+  /* green */
+}
+
+.ng-invalid.ng-touched:not(form) {
+  border-left: 5px solid #a94442;
+  /* red */
+}
+
+@import '~bootstrap/dist/css/bootstrap.min.css';

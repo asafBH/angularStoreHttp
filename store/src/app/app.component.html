@@ -1,0 +1,44 @@
+<mat-sidenav-container class="nav-container">
+  <mat-sidenav class="sideNav" #sidenav mode="side" [opened]="sibCom.sideNavIsOpen" (click)="sibCom.toggle()">
+    <p routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="mouse-pointer">
+      {{(localization.menuItem$ | async)?.Home | lang:localization.currentLang}}</p>
+    <p routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="mouse-pointer">
+      {{(localization.menuItem$ | async)?.About | lang:localization.currentLang}}</p>
+    <p routerLink="/categories" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+      class="mouse-pointer">{{(localization.menuItem$ | async)?.Products | lang:localization.currentLang}}</p>
+    <p routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="mouse-pointer">
+      {{(localization.menuItem$ | async)?.Contacts | lang:localization.currentLang}}</p>
+    <p routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+      [hidden]="!userLog.isAuthenticated" class="mouse-pointer">
+      {{(localization.menuItem$ | async)?.ShoppingCart | lang:localization.currentLang}}
+      ({{(cart.$cartSubject | async)?.length}})</p>
+    <p *ngIf="(userLog.userLoggedIn && userLog.userLoggedIn === 'admin')"><a class="mouse-pointer"
+        routerLink="/addProduct" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}">{{(localization.menuItem$ | async)?.AddProduct | lang:localization.currentLang}}</a>
+    </p>
+    <p routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+      [hidden]="userLog.isAuthenticated" class="mouse-pointer">
+      {{(localization.menuItem$ | async)?.LogIn | lang:localization.currentLang}}</p>
+    <p [hidden]="!userLog.isAuthenticated" (click)="userLog.logOut()" class="mouse-pointer">
+      {{(localization.menuItem$ | async)?.LogOut | lang:localization.currentLang}}</p>
+    <app-social-links>
+      <a #Sociallink href="https://www.facebook.com">
+        <fa-icon class="facebook" [icon]="facebook"></fa-icon>
+      </a>
+      <a #Sociallink href="https://github.com/">
+        <fa-icon [icon]="github"></fa-icon>
+      </a>
+      <a #Sociallink href="mailto:asafbenhorin@email.com">
+        <fa-icon [icon]="email"></fa-icon>
+      </a>
+    </app-social-links>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header></app-header>
+    <div class="padding-main" [@routeAnimations]="o && o.activatedRouteData 
+      && o.activatedRouteData['animation']">
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

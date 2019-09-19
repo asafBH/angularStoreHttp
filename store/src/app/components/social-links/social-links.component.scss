@@ -1,0 +1,26 @@
+.social-icons {
+  cursor: pointer;
+}
+
+:host {
+  display: flex;
+  position: absolute;
+  bottom: 2px;
+  cursor: pointer;
+  justify-content: center;
+  width: 100%;
+}
+
+:host ::ng-deep a {
+  padding: 15px;
+}
+
+// .social-icons {
+//   display: flex;
+//   position:absolute;
+//   bottom:2px;
+//   cursor: pointer;
+//   justify-content: center;
+//   justify-content: space-evenly;
+//   width: 100%;
+// }
